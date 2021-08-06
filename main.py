@@ -1,6 +1,23 @@
 import tkinter as tk
+from random import randint
 WIDTH = 500
 HEIGHT = 800
+
+class Figures():
+	"""docstring for Figures"""
+	def __init__(self, canvas):
+		pass
+
+
+class s_shape(Figures):
+	def create_figure(self):
+		start = randint(0, 9)
+		self.canvas = canvas
+		res = []
+		res.append(self.canvas.create_rectangle(start*(WIDTH//10), 0, (start+1)*(WIDTH//10), WIDTH//10, fill='green'))
+		res.append(self.canvas.create_rectangle(start*(WIDTH//10), WIDTH//10, (start+1)*(WIDTH//10), 2*WIDTH//10, fill='green'))
+		res.append(self.canvas.create_rectangle((start+1)*(WIDTH//10), WIDTH//10, (start+2)*(WIDTH//10), 2*WIDTH//10, fill='green'))
+		res.append(self.canvas.create_rectangle((start+1)*(WIDTH//10), 2*WIDTH//10, (start+2)*(WIDTH//10), 3*WIDTH//10, fill='green'))
 
 
 
@@ -24,5 +41,8 @@ if __name__ == "__main__":
 	canvas.pack()
 
 	lines_vertical, lines_horisontal = draw_grid(canvas)
+
+	s = s_shape(canvas)
+	s.create_figure()
 
 	root.mainloop()
